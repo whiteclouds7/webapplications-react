@@ -29,15 +29,17 @@ const createCalculation = () => {
     input.setAttribute('type', 'number');
     li.appendChild(input);
 
-    // add keypress event to input
+    // add keypress event-listener to input
     input.addEventListener('keypress', (event) => {
         if(event.key === 'Enter') {
             li.innerHTML = `${a} ${operations[operation]} ${b} = ${calculateResult(a,b,operation)}`;
             li.style.color = parseInt(input.value) === calculateResult(a,b,operation) ? 'green' : 'red';
+            // execute again after enter key pressed
             createCalculation();
         }
     })
 }
 
+// execute at beginning
 createCalculation();
 
