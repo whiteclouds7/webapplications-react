@@ -1,0 +1,16 @@
+// src: https://github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md
+{
+    // eslint will stop looking for other eslint files as soon one with this attribute set to true ist found
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "env": {
+        "browser": true
+    }
+}
