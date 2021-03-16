@@ -16,5 +16,8 @@
     "esModuleInterop": true,
     // Raise error on expressions and declarations with an implied any type.
     "noImplicitAny": true
-  }
+  },
+  "include": [
+    "src"
+  ]
 }
