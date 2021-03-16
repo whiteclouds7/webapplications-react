@@ -16,7 +16,7 @@
   \***********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _square__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./square */ \"./src/square.ts\");\n/* harmony import */ var _sum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sum */ \"./src/sum.ts\");\n\r\n\r\nconst a = 5;\r\n// document.writeln(\"The sum of 5 and 8 is \", sum(\"5\", 8).toString(), \"<br>\");\r\ndocument.writeln(\"The sum of 5 and 8 is \", (0,_sum__WEBPACK_IMPORTED_MODULE_1__.default)(5, 8).toString(), \"<br>\");\r\ndocument.writeln(\"The square of 6 is \", (0,_square__WEBPACK_IMPORTED_MODULE_0__.default)(6).toString(), \"<br>\");\r\n\n\n//# sourceURL=webpack://assignment2/./src/script.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _square__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./square */ \"./src/square.ts\");\n/* harmony import */ var _sum__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sum */ \"./src/sum.ts\");\n\r\n\r\nconst a = 5;\r\ndocument.writeln(\"The sum of 5 and 8 is \", (0,_sum__WEBPACK_IMPORTED_MODULE_1__.default)(\"5\", 8).toString(), \"<br>\");\r\n// document.writeln(\"The sum of 5 and 8 is \", sum(5, 8).toString(), \"<br>\");\r\ndocument.writeln(\"The square of 6 is \", (0,_square__WEBPACK_IMPORTED_MODULE_0__.default)(6).toString(), \"<br>\");\r\n\n\n//# sourceURL=webpack://assignment2/./src/script.ts?");
 
 /***/ }),
 
