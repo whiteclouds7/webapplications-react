@@ -1,1 +1,1 @@
-(()=>{"use strict";var t,r;document.writeln("The sum of 5 and 8 is ",(t=5,r=8,t+r).toString(),"<br>"),document.writeln("The square of 6 is ",(t=>t*t)(6).toString(),"<br>")})();
+(()=>{"use strict";var t,r;document.writeln("The sum of 5 and 8 is ",(t="5",r=8,t+r).toString(),"<br>"),document.writeln("The square of 6 is ",(t=>t*t)(6).toString(),"<br>")})();
