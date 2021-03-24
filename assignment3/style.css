@@ -25,9 +25,13 @@ body {
 .message {
     border-bottom: 2px dotted darkgrey;
     border-top: 2px dotted darkgrey;
+    padding: 10px;
 }
 
 .unread {
     background: lavender;
-    padding: 10px;
+}
+
+#unreadMessages {
+    color: red;
 }
