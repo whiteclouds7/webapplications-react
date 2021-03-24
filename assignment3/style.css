@@ -3,8 +3,14 @@ body {
     margin: 20px;
 }
 
+h1 {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
 .navbar {
-    background-color: yellow;
+    background-color: #9b4dca;
+    color: white;
     font-weight: bold;
     padding: 15px;
     margin-bottom: 50px;
@@ -15,7 +21,7 @@ body {
 }
 
 .navbar span:hover {
-    background: lavender;
+    border-bottom: 5px solid white;
 }
 
 #messageList {
@@ -23,13 +29,15 @@ body {
 }
 
 .message {
-    border-bottom: 2px dotted darkgrey;
-    border-top: 2px dotted darkgrey;
+    border: 2px solid #9b4dca;
     padding: 10px;
+    background: lavender;
+    border-radius: 10px;
 }
 
 .unread {
-    background: lavender;
+    background-color: #9b4dca;
+    color: white;
 }
 
 #unreadMessages {

@@ -35,8 +35,13 @@ newMessage.addEventListener(
 
 messageList.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;
-  if (target.classList.contains("unread")) {
-    target.classList.remove("unread");
+  if (
+    target.classList.contains("unread") ||
+    target.parentElement.classList.contains("unread")
+  ) {
+    target.classList.contains("unread")
+      ? target.classList.remove("unread")
+      : target.parentElement.classList.remove("unread");
     unreadMessageCounter -= 1;
     updateReadMessages();
     updateMessageNav();
