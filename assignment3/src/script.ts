@@ -72,5 +72,5 @@ const updateReadMessages = () => {
 const updateMessageNav = () => {
   readMessages.innerHTML = `Messages [${
     unreadMessageCounter > 5 ? "5+" : unreadMessageCounter
-  } new]`;
+  }]`;
 };

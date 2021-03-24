@@ -7,7 +7,7 @@
 </head>
 <body>
 <nav class="navbar">
-    <span id="readMessages">Messages [0 new]</span>
+    <span id="readMessages">Messages [0]</span>
     <span id="newMessages">Add Message</span>
 </nav>
 
@@ -16,18 +16,15 @@
     <input type="text" name="subject" required/>
 
     <label for="body">body</label>
-    <input type="text" name="body" />
+    <textarea name="body"></textarea>
 
     <button>send</button>
 </form>
 <div id="messageBlock" hidden>
     <span id="unreadMessages" hidden></span>
     <ul id="messageList">
-
     </ul>
 </div>
-
-
 
 <script src="./dist/bundle.js"></script>
 </body>
