@@ -1,0 +1,33 @@
+body {
+    font-family: "Courier New", serif;
+    margin: 20px;
+}
+
+.navbar {
+    background-color: yellow;
+    font-weight: bold;
+    padding: 15px;
+    margin-bottom: 50px;
+}
+
+.navbar span {
+    padding: inherit;
+}
+
+.navbar span:hover {
+    background: lavender;
+}
+
+#messageList {
+    list-style-type: none;
+}
+
+.message {
+    border-bottom: 2px dotted darkgrey;
+    border-top: 2px dotted darkgrey;
+}
+
+.unread {
+    background: lavender;
+    padding: 10px;
+}

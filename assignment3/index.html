@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar">
+    <span id="readMessages">Messages [0 new]</span>
+    <span id="newMessages">New Message</span>
+</nav>
+
+<form id="form">
+    <label for="subject">Subject</label>
+    <input type="text" name="subject" required/>
+
+    <label for="body">body</label>
+    <input type="text" name="body" />
+
+    <button>send</button>
+</form>
+<div id="messageBlock" hidden>
+    <span id="unreadMessages" hidden></span>
+    <ul id="messageList">
+
+    </ul>
+</div>
+
+
+
+<script src="./dist/bundle.js"></script>
+</body>
+</html>
