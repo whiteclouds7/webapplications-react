@@ -65,7 +65,7 @@ const submitForm = (event: Event): void => {
   form.reset();
 };
 
-const updateReadMessages = () => {
+const updateReadMessages = (): void => {
   if (unreadMessageCounter > 0) {
     unreadMessages.innerHTML = `you have ${unreadMessageCounter} messages`;
     unreadMessages.hidden = false;
@@ -74,7 +74,7 @@ const updateReadMessages = () => {
   }
 };
 
-const updateMessageNav = () => {
+const updateMessageNav = (): void => {
   readMessages.innerHTML = `Messages [${
     unreadMessageCounter > 5 ? "5+" : unreadMessageCounter
   }]`;
