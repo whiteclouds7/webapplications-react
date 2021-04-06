@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Message } from "../App";
 
 interface MessageList {
-  // messageList: Message[];
-  // setMessageList: (m: Message[]) => void;
   addMessage: (m: Message) => void;
 }
 
