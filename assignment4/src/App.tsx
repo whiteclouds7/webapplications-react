@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import NavigationBar, { NavigationItem } from "./NavigationBar/NavigationBar";
+import React, { useState } from "react";
+import NavigationBar from "./NavigationBar/NavigationBar";
 import MessageForm from "./Form/MessageForm";
 import MessageItem from "./MessageItem/MessageItem";
 
@@ -12,21 +12,25 @@ export interface Message {
 const App = (): JSX.Element => {
   const [formIsShown, setFormIsShown] = useState(true);
   const [messageList, setMessageList] = useState<Array<Message>>([]);
-  const [navigationItems, setNavigationItems] = useState<Array<NavigationItem>>(
-    [
-      {
-        label: "Messages",
-        onClick: () => setFormIsShown(false),
-      },
-      {
-        label: "New Messages",
-        onClick: () => setFormIsShown(true),
-      },
-    ]
-  );
+
+  const navigationItems = [
+    {
+      label: `Messages [${
+        messageList.filter((m: Message) => !m.read).length > 5
+          ? "5+"
+          : messageList.filter((m: Message) => !m.read).length
+      }]`,
+      onClick: () => setFormIsShown(false),
+    },
+    {
+      label: "New Messages",
+      onClick: () => setFormIsShown(true),
+    },
+  ];
 
   const addMessage = (m: Message): void => {
     updateMessage(messageList, m);
+    setFormIsShown(false);
   };
 
   const readMessage = (m: Message): void => {
@@ -46,20 +50,6 @@ const App = (): JSX.Element => {
       )
     );
   };
-
-  useEffect(() => {
-    setNavigationItems([
-      {
-        ...navigationItems[0],
-        label: `Messages [${
-          messageList.filter((m: Message) => !m.read).length > 5
-            ? "5+"
-            : messageList.filter((m: Message) => !m.read).length
-        }]`,
-      },
-      navigationItems[1],
-    ]);
-  }, [messageList]);
 
   return (
     <>

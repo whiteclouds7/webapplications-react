@@ -34,6 +34,7 @@ const MessageForm = (props: MessageList): JSX.Element => {
         name="subject"
         onChange={(e) => setSubject(e.target.value)}
         value={subject}
+        autoComplete="off"
         required
       />
 
