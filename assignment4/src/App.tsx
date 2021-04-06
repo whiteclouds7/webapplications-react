@@ -40,7 +40,11 @@ const App = (): JSX.Element => {
   };
 
   const updateMessage = (messages: Message[], m: Message): void => {
-    setMessageList([...messages, m]);
+    setMessageList(
+      [...messages, m].sort((m1: Message, m2: Message) =>
+        m1.read === m2.read ? 0 : m2.read ? -1 : 1
+      )
+    );
   };
 
   useEffect(() => {

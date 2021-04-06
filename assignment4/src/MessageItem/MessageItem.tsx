@@ -14,6 +14,7 @@ const MessageItem = (props: MessageItemProps): JSX.Element => {
         backgroundColor: !props.message.read ? "#9b4dca" : "lavender",
         color: !props.message.read ? "white" : "grey",
         padding: 10,
+        margin: 10,
         borderRadius: 10,
         border: "2px solid #9b4dca",
       }}
