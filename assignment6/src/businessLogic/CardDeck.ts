@@ -5,13 +5,12 @@ export type Guess = "higher" | "lower";
 export class CardDeck {
   private cards: Card[] = [];
   private playedCards: Card[] = [];
-  // private prevCard!: Card;
   private score = 0;
 
   constructor(cards: Card[], playedCards: Card[] = [], score = 0) {
     this.cards.push(...cards);
     this.score = score;
-    this.playedCards = playedCards;
+    this.playedCards.push(...playedCards);
   }
 
   private drawCard(): Card {
@@ -51,7 +50,11 @@ export class CardDeck {
   }
 
   getPreviousCard(): Card {
-    return this.playedCards[this.playedCards.length - 1];
+    return this.playedCards[this.getPlayedDeckSize() - 1];
+  }
+
+  getPlayedDeckSize(): number {
+    return this.playedCards.length;
   }
 
   getAllCards(): Card[] {

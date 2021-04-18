@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Color } from "../businessLogic/Card";
 import styled from "styled-components";
 
-const colors = {
+export const colors = {
   Heart: "♥",
   Diamond: "♦",
   Club: "♣",
