@@ -4,41 +4,49 @@ export type Guess = "higher" | "lower";
 
 export class CardDeck {
   private cards: Card[] = [];
-  private curCard!: Card;
-  private prevCard!: Card;
+  private playedCards: Card[] = [];
+  // private prevCard!: Card;
   private score = 0;
 
-  constructor(cards: Card[], score = 0) {
+  constructor(cards: Card[], playedCards: Card[] = [], score = 0) {
     this.cards.push(...cards);
     this.score = score;
-    this.curCard = this.drawCard();
+    this.playedCards = playedCards;
   }
 
   private drawCard(): Card {
-    if (this.getDeckSize() >= 0) {
-      this.prevCard = this.curCard;
-      this.curCard = <Card>this.cards.pop();
-      return this.curCard;
+    if (this.getDeckSize() > 1) {
+      // there has to be at least one card left to pop
+      this.playedCards.push(<Card>this.cards.pop());
+      return this.cards[this.getDeckSize() - 1];
     }
     throw Error("Deck is empty");
   }
 
-  guessCard(guess: Guess): boolean {
-    this.drawCard();
-    let guessedRight: boolean;
-    if (guess === "higher") {
-      guessedRight = <boolean>this.prevCard?.isLower(this.curCard);
-    } else {
-      guessedRight = <boolean>this.curCard?.isLower(this.prevCard);
+  guessCard(guess: Guess): void {
+    try {
+      this.drawCard();
+      let guessedRight: boolean;
+      console.log("size: ", this.getDeckSize());
+      if (guess === "higher") {
+        guessedRight = <boolean>(
+          this.playedCards[this.playedCards.length].isLower(this.getCurCard())
+        );
+      } else {
+        guessedRight = <boolean>(
+          this.getCurCard().isLower(this.playedCards[this.playedCards.length])
+        );
+      }
+      if (guessedRight) {
+        this.score += 1;
+      }
+    } catch (e) {
+      console.log(e.message);
     }
-    if (guessedRight) {
-      this.score += 1;
-    }
-    return guessedRight;
   }
 
   getCurCard(): Card {
-    return this.curCard;
+    return this.cards[this.getDeckSize() - 1];
   }
 
   getAllCards(): Card[] {
@@ -51,6 +59,10 @@ export class CardDeck {
 
   getScore(): number {
     return this.score;
+  }
+
+  getPlayedCards(): Card[] {
+    return this.playedCards;
   }
 
   static initializeCardDeck(): Card[] {
