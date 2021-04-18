@@ -30,15 +30,16 @@ export class CardDeck {
       console.log("size: ", this.getDeckSize());
       if (guess === "higher") {
         guessedRight = <boolean>(
-          this.playedCards[this.playedCards.length].isLower(this.getCurCard())
+          this.getPreviousCard().isLower(this.getCurCard())
         );
       } else {
         guessedRight = <boolean>(
-          this.getCurCard().isLower(this.playedCards[this.playedCards.length])
+          this.getCurCard().isLower(this.getPreviousCard())
         );
       }
       if (guessedRight) {
         this.score += 1;
+        console.log(this.score);
       }
     } catch (e) {
       console.log(e.message);
@@ -47,6 +48,10 @@ export class CardDeck {
 
   getCurCard(): Card {
     return this.cards[this.getDeckSize() - 1];
+  }
+
+  getPreviousCard(): Card {
+    return this.playedCards[this.playedCards.length - 1];
   }
 
   getAllCards(): Card[] {
