@@ -3,8 +3,9 @@ import styled, { createGlobalStyle } from "styled-components";
 import GuessCard from "./components/GuessCard";
 import {CardDeck} from "./businessLogic/CardDeck";
 import {autorun} from "mobx";
+import {Game} from "./businessLogic/Game";
 
-const game = new CardDeck(CardDeck.initializeCardDeck());
+const game = new Game(new CardDeck(CardDeck.initializeCardDeck()));
 
 autorun(() => {
     console.log(`new Card drawn ${game.curCard.color} ${game.curCard.cardType}`);

@@ -1,15 +1,14 @@
 import { Card, CardType, Color } from "./Card";
-import {action , computed, makeObservable, observable} from 'mobx';
-
-export type Guess = "higher" | "lower";
+import {Guess} from "./Game";
+import {makeAutoObservable} from "mobx";
 
 export class CardDeck {
-  @observable private cards: Card[] = [];
-  @observable private playedCards: Card[] = [];
-  @observable score = 0;
+  private cards: Card[] = [];
+  private playedCards: Card[] = [];
+  core = 0;
 
   constructor(cards: Card[]) {
-    makeObservable(this);
+    makeAutoObservable(this); // see https://mobx.js.org/observable-state.html#makeautoobservable
     this.cards.push(...cards);
   }
 
@@ -22,7 +21,7 @@ export class CardDeck {
     throw Error("Deck is empty");
   }
 
-  @action guessCard(guess: Guess): void {
+  guessCard(guess: Guess): boolean {
     try {
       this.drawCard();
       let guessedRight: boolean;
@@ -35,27 +34,26 @@ export class CardDeck {
           this.curCard.isLower(this.previousCard)
         );
       }
-      if (guessedRight) {
-        this.score += 1;
-      }
+      return guessedRight;
     } catch (e) {
       console.log(e.message);
     }
+    return false;
   }
 
-  @computed get curCard(): Card {
+  get curCard(): Card {
     return this.cards[this.deckSize - 1];
   }
 
-  @computed get previousCard(): Card {
+  get previousCard(): Card {
     return this.playedCards[this.playedDeckSize - 1];
   }
 
-  @computed get playedDeckSize(): number {
+  get playedDeckSize(): number {
     return this.playedCards.length;
   }
 
-  @computed get deckSize(): number {
+  get deckSize(): number {
     return this.cards.length;
   }
 

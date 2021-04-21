@@ -1,9 +1,9 @@
 import React from "react";
 import {Color} from "../businessLogic/Card";
-import {CardDeck, Guess} from "../businessLogic/CardDeck";
 import styled from "styled-components";
 import CardComponent, {colors} from "./CardComponent";
 import {observer} from "mobx-react";
+import {Game, Guess} from "../businessLogic/Game";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -45,7 +45,7 @@ const History = styled.div<{ color: Color }>`
 `;
 
 interface Props {
-    game: CardDeck,
+    game: Game,
 }
 
 const GuessCard = observer(({game}: Props): JSX.Element => {
