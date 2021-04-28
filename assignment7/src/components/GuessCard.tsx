@@ -61,27 +61,27 @@ const GuessCard = observer(({game}: Props): JSX.Element => {
       <ButtonContainer>
         <button
           onClick={() => handleGuess("lower")}
-          disabled={game.deckSize <= 1}
+          disabled={game.isFinished}
         >
           lower
         </button>
         <span>Score: {game.score}</span>
         <button
           onClick={() => handleGuess("higher")}
-          disabled={game.deckSize <= 1}
+          disabled={game.isFinished}
         >
           higher
         </button>
       </ButtonContainer>
       <History
         color={
-          game.playedDeckSize > 0
+          game.isStarted
             ? game.previousCard.color
             : "Heart"
         }
       >
         <h2>Cards left: {game.deckSize}</h2>
-        {game.playedDeckSize > 0 && (
+        {game.isStarted && (
           <h3>
             Recently played Card:{" "}
             <span>

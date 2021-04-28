@@ -34,4 +34,12 @@ export class Game {
     @computed get curCard(): Card {
         return this.deck.curCard;
     }
+
+    get isFinished(): boolean {
+        return this.deck.deckSize <= 1;
+    }
+
+    get isStarted(): boolean {
+        return this.deck.playedDeckSize > 0;
+    }
 }
