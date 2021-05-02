@@ -1,5 +1,6 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import GifList from "./components/GifList";
 
 const GlobalStyles = createGlobalStyle`
 body {
@@ -8,28 +9,16 @@ body {
   font-weight: 300;
   letter-spacing: .01em;
   line-height: 1.6;
-}
-
-h1 {
-  color: cadetblue;
-  font-size: 4rem;
-  font-weight: bold;
+  background-color: #FFC0CB;
 }
 `;
 
-const StyledContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-`;
 
 const App = (): JSX.Element => {
   return (
     <>
       <GlobalStyles />
-      <StyledContainer>
-      </StyledContainer>
+          <GifList/>
     </>
   );
 };
