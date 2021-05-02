@@ -82,6 +82,7 @@ const GifList = observer(
     const resetStore = () => {
       store.maxPages = 0;
       store.currentPage = 0;
+      setPage(0);
     };
 
     const navigationItems = [
@@ -91,6 +92,7 @@ const GifList = observer(
           setMenu(Menu.TRENDING);
           store.lastSearch = TRENDING;
           store.currentPage = 0;
+          setPage(0);
         },
       },
       {
@@ -103,8 +105,10 @@ const GifList = observer(
     ];
 
     const handleGoToPage = (page: number) => {
-      store.currentPage = page;
-      setPage(page);
+      if (page >= 0 && page <= store.maxPages) {
+        store.currentPage = page;
+        setPage(page);
+      }
     };
 
     useEffect(() => {
@@ -125,28 +129,30 @@ const GifList = observer(
             }}
           />
         )}
-        <StyledButtonContainer>
-          <StyledButton onClick={() => handleGoToPage(store.currentPage - 1)}>
-            previous
-          </StyledButton>
-          <div>
-            <StyledInput
-              value={page.toString()}
-              type="number"
-              min="0"
-              max={store.maxPages.toString()}
-              onChange={(e) => setPage(parseInt(e.target.value))}
-              onKeyUp={(e) =>
-                e.code === "Enter" ? handleGoToPage(page) : undefined
-              }
-            />
-            <span>Press enter</span>
-          </div>
-          <span>/{store.maxPages}</span>
-          <StyledButton onClick={() => handleGoToPage(store.currentPage + 1)}>
-            next
-          </StyledButton>
-        </StyledButtonContainer>
+        {(menu === Menu.TRENDING || store.lastSearch !== TRENDING) && (
+          <StyledButtonContainer>
+            <StyledButton onClick={() => handleGoToPage(store.currentPage - 1)}>
+              previous
+            </StyledButton>
+            <div>
+              <StyledInput
+                value={page.toString()}
+                type="number"
+                min="0"
+                max={store.maxPages.toString()}
+                onChange={(e) => setPage(parseInt(e.target.value))}
+                onKeyUp={(e) =>
+                  e.code === "Enter" ? handleGoToPage(page) : undefined
+                }
+              />
+              <span>Press enter</span>
+            </div>
+            <span>/{store.maxPages}</span>
+            <StyledButton onClick={() => handleGoToPage(store.currentPage + 1)}>
+              next
+            </StyledButton>
+          </StyledButtonContainer>
+        )}
         {store.loading ? (
           <StyledContainer>
             <img
