@@ -35,7 +35,7 @@ const StyledInput = styled.input`
   padding: 0.6rem 1rem 0.7rem;
   margin: 0 3rem;
   width: 100px;
-  font-family: Courier New,serif;
+  font-family: Courier New, serif;
   flex-grow: 2;
 `;
 
