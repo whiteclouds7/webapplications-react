@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import Pagination from "./components/Pagination";
 import PaginationList from "./components/PaginationList";
 
-const data: number[] = Array.from(Array(52).keys());
 const dataPerPage = 10;
 
-const App = (): JSX.Element => {
+interface Props {
+  data: number[];
+}
+
+const App = ({ data }: Props): JSX.Element => {
   const [page, setPage] = useState(0);
 
   const handlePageSwitch = (newPage: number): void => {

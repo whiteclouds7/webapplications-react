@@ -5,6 +5,8 @@
 
 # testing
 /coverage
+/tests_output
+chromedriver.log
 
 # production
 /dist
