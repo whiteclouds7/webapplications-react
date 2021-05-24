@@ -24,16 +24,17 @@ const fillLineGraph = () => {
     `https://api.covid19api.com/country/austria?from=2020-03-01T00:00:00Z&to=${new Date(
       Date.now()
     ).toISOString()}`,
-    function (data) {
-      // Add X axis --> it is a date format
+    (data) => {
+      // Add X axis
       const x = d3
         .scaleTime()
         .domain(
-          d3.extent(data, function (d) {
+          d3.extent(data, (d) => {
             return Date.parse(d.Date);
           })
         )
         .range([0, widthLine]);
+
       svgLine
         .append("g")
         .attr("transform", "translate(0," + heightLine + ")")
@@ -44,11 +45,12 @@ const fillLineGraph = () => {
         .scaleLinear()
         .domain([
           0,
-          d3.max(data, function (d) {
+          d3.max(data, (d) => {
             return +d.Active;
           }),
         ])
         .range([heightLine, 0]);
+
       svgLine.append("g").call(d3.axisLeft(y));
 
       // Add the line
@@ -62,15 +64,13 @@ const fillLineGraph = () => {
           "d",
           d3
             .line()
-            .x(function (d) {
+            .x((d) => {
               return x(Date.parse(d.Date));
             })
-            .y(function (d) {
+            .y((d) => {
               return y(d.Active);
             })
         );
-
-      console.log(data);
     }
   );
 };

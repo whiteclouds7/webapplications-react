@@ -21,8 +21,9 @@ const fillBarChart = () => {
     );
   };
 
-  d3.json("https://api.covid19api.com/summary", function (data) {
-    const top = data.Countries.sort(function (a, b) {
+  d3.json("https://api.covid19api.com/summary", (data) => {
+    // filter by top 10 countries with active covid-19 cases
+    const top = data.Countries.sort((a, b) => {
       return active(b) - active(a);
     }).slice(0, 10);
 
@@ -31,7 +32,7 @@ const fillBarChart = () => {
       .scaleBand()
       .range([0, widthBar])
       .domain(
-        top.map(function (d) {
+        top.map((d) => {
           return d.CountryCode;
         })
       )
@@ -58,19 +59,19 @@ const fillBarChart = () => {
       .data(top)
       .enter()
       .append("rect")
-      .attr("x", function (d) {
+      .attr("x", (d) => {
         return x(d.CountryCode);
       })
-      .attr("y", function (d) {
+      .attr("y", () => {
         return y(0);
       })
       .transition()
       .duration(2000)
-      .attr("y", function (d) {
+      .attr("y", (d) => {
         return y(active(d));
       })
       .attr("width", x.bandwidth())
-      .attr("height", function (d) {
+      .attr("height", (d) => {
         return heightBar - y(active(d));
       })
       .attr("fill", "#ccccff");
